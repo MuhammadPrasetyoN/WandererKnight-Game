@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3886733, g: 0.7280866, b: 0.7325946, a: 1}
+  m_IndirectSpecularColor: {r: 0.38865638, g: 0.7280808, b: 0.73259854, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548551463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -151.5, y: 1.78, z: 826.13}
+  m_LocalPosition: {x: -148.931, y: 1.78, z: 825.166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -768,10 +768,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 60788324929380707, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1948329710155509286, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
       propertyPath: m_Name
       value: Enemy_Skeleton
@@ -786,7 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948329710155936262, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.91
+      value: 0.904
       objectReference: {fileID: 0}
     - target: {fileID: 1948329710155936262, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -820,9 +816,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5221380202512799961, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
-      propertyPath: attackRange
-      value: 1.8
+    - target: {fileID: 1948329710165024164, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}

@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange = 1.5f;
     [SerializeField] float aggroRange = 4f;
 
-
     GameObject player;
     NavMeshAgent agent;
     Animator animator;
@@ -26,28 +25,32 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-void Update()
-{
-    animator.SetFloat("speed", agent.velocity.magnitude / agent.speed);
-
-    if (timePassed >= attackCD)
+    void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+        animator.SetFloat("speed", agent.velocity.magnitude / agent.speed);
+
+        if (timePassed >= attackCD)
         {
-            animator.SetTrigger("attack");
-            timePassed = 0;
+            if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+            {
+                animator.SetTrigger("attack");
+                timePassed = 0;
+            }
+        }
+        timePassed += Time.deltaTime;
+
+        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        {
+            newDestinationCD = 0.5f;
+            agent.SetDestination(player.transform.position);
+        }
+        newDestinationCD -= Time.deltaTime;
+
+        if(Vector3.Distance(player.transform.position, transform.position) <= aggroRange){
+            Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) ;
+            transform.LookAt(targetPostition);
         }
     }
-    timePassed += Time.deltaTime;
-
-    if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
-    {
-        newDestinationCD = 0.5f;
-        agent.SetDestination(player.transform.position);
-    }
-    newDestinationCD -= Time.deltaTime;
-    transform.LookAt(player.transform);
-}
 
     public void TakeDamage(float damageAmount)
     {
@@ -58,25 +61,27 @@ void Update()
         }
     } 
     
-   void Die(){
+    void Die(){
         Destroy(this.gameObject);
-   }
+    }
 
-   public void StartDealDamage()
-   {
-    GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
-   }
+    public void StartDealDamage()
+    {
+        GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
+        Debug.Log("Enemy Attacking");
+    }
 
     public void EndDealDamage()
-   {
-    GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
-   }
+    {
+        GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
+    }
 
    private void OnDrawGizmos()
    {
-    Gizmos.color = Color.red;
-    Gizmos.DrawWireSphere(transform.position, attackRange);
-    Gizmos.color = Color.yellow;
-    Gizmos.DrawWireSphere(transform.position, aggroRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
    }
+
 }

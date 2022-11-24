@@ -25,7 +25,7 @@ public class EnemyDamageDealer : MonoBehaviour
             int layerMask = 1 << 6;
             if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength, layerMask))
             {
-                    print("enemy has dealt damage");
+                    Debug.Log("enemy has dealt damage");
                     hasDealtDamage = true;
                 
             }

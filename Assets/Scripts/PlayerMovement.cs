@@ -78,11 +78,6 @@ public class PlayerMovement : MonoBehaviour
             jumpButtonPressedTime = Time.time;
         }
 
-        if(Input.GetKeyDown(KeyCode.C)){
-            animator.SetTrigger("doRoll");
-        } 
-
-
         if(Time.time - lastGroundedTime <= jumpButtonGracePeriod) {
             characterController.stepOffset = originalStepOffset;
             ySpeed = -0.5f;
@@ -106,18 +101,19 @@ public class PlayerMovement : MonoBehaviour
             if((isJumping && ySpeed < 0) || ySpeed < -2){
                 animator.SetBool("isFalling", true);
             }
-            // if(ySpeed < ySpeedBefore){
-            //     animator.SetBool("isFalling", true);
-            // }
         }
 
         ySpeedBefore = ySpeed;
 
         if(movementDirection != Vector3.zero){
             animator.SetBool("isMoving", true);
+        
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            
+            if(Input.GetKeyDown(KeyCode.C)){
+                animator.SetTrigger("doRoll");
+            } 
 
         } else {
             animator.SetBool("isMoving", false);

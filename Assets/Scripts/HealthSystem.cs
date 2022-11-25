@@ -11,7 +11,7 @@ public class HealthSystem : MonoBehaviour
     Animator animator;
     void Start()
     {
-        // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
  
     public void TakeDamage(float damageAmount)
@@ -29,7 +29,7 @@ public class HealthSystem : MonoBehaviour
  
     void Die()
     {
-        // Instantiate(ragdoll, transform.position, transform.rotation);
+        Instantiate(ragdoll, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 

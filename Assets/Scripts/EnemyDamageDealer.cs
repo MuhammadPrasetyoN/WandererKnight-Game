@@ -9,26 +9,31 @@ public class EnemyDamageDealer : MonoBehaviour
     [SerializeField] float weaponDamage;
     [SerializeField] private LayerMask _layerMask;
 
+    private Vector3 collision = Vector3.zero;
+
     void Start()
     {
         canDealDamage = false;
     }
  
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (canDealDamage)
         {
             
             RaycastHit raycastHit;
  
-            int layerMask = 1 << 6;
-            if (Physics.Raycast(transform.position, -transform.up, out raycastHit, weaponLength, layerMask))
+            // int layerMask = 1 << 6;
+            if (Physics.Raycast(transform.position, transform.up, out raycastHit, weaponLength, _layerMask))
             {
-                    Debug.Log("YES");
+                if (raycastHit.transform.TryGetComponent(out HealthSystem health)){
                     Debug.Log("enemy has dealt damage");
-                    // health.TakeDamage(weaponDamage);
-                    // health.HitVFX(raycastHit.point);
+                    health.TakeDamage(weaponDamage);
+                    health.HitVFX(raycastHit.point);
+
+                    collision = raycastHit.point;
+                }
             }
         }
     }
@@ -46,6 +51,9 @@ public class EnemyDamageDealer : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position - transform.up * weaponLength);
+        Gizmos.DrawLine(transform.position, transform.position + transform.up * weaponLength);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(collision, 0.2f);
     }
 }

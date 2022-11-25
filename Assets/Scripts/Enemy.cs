@@ -31,6 +31,10 @@ public class Enemy : MonoBehaviour
     {
         animator.SetFloat("speed", agent.velocity.magnitude / agent.speed);
 
+        if(player == null){
+            return;
+        }
+        
         if (timePassed >= attackCD)
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
@@ -51,7 +55,9 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(player.transform.position, transform.position) <= aggroRange){
             Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) ;
             transform.LookAt(targetPostition);
-        }
+        } 
+        
+        
     }
 
     public void TakeDamage(float damageAmount)

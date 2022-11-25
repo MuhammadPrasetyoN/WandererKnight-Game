@@ -2491,6 +2491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90487a3382bf978468054b05fc160a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackGracePeriod: 1.5
+  attackCD: 0.5
   isAttacking: 0
 --- !u!114 &7872987160658600475
 MonoBehaviour:

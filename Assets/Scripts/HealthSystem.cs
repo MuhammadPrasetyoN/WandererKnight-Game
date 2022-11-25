@@ -11,12 +11,13 @@ public class HealthSystem : MonoBehaviour
     Animator animator;
     void Start()
     {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
     }
  
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+        Debug.Log("AHH "+ health);
         animator.SetTrigger("damage");
       //  CameraShake.Instance.ShakeCamera(2f, 0.2f);
  
@@ -28,9 +29,10 @@ public class HealthSystem : MonoBehaviour
  
     void Die()
     {
-        Instantiate(ragdoll, transform.position, transform.rotation);
+        // Instantiate(ragdoll, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
+
     public void HitVFX(Vector3 hitPosition)
     {
         GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);

@@ -1,41 +1,43 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
 public class EnemyDamageDealer : MonoBehaviour
 {
     bool canDealDamage;
-    bool hasDealtDamage;
  
     [SerializeField] float weaponLength;
     [SerializeField] float weaponDamage;
+    [SerializeField] private LayerMask _layerMask;
+
     void Start()
     {
         canDealDamage = false;
-        hasDealtDamage = false;
     }
  
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (canDealDamage && !hasDealtDamage)
+        if (canDealDamage)
         {
-            RaycastHit hit;
+            
+            RaycastHit raycastHit;
  
             int layerMask = 1 << 6;
-            if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength, layerMask))
+            if (Physics.Raycast(transform.position, -transform.up, out raycastHit, weaponLength, layerMask))
             {
+                    Debug.Log("YES");
                     Debug.Log("enemy has dealt damage");
-                    hasDealtDamage = true;
-                
+                    // health.TakeDamage(weaponDamage);
+                    // health.HitVFX(raycastHit.point);
             }
         }
     }
+
     public void StartDealDamage()
     {
         canDealDamage = true;
-        hasDealtDamage = false;
     }
+
     public void EndDealDamage()
     {
         canDealDamage = false;

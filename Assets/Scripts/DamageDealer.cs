@@ -4,17 +4,16 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     bool canDealDamage;
-    List<GameObject> hasDealtDamage;
  
     [SerializeField] float weaponLength;
     [SerializeField] float weaponDamage;
+
     void Start()
     {
         canDealDamage = false;
-        hasDealtDamage = new List<GameObject>();
     }
  
-    void Update()
+    void FixedUpdate()
     {
         if (canDealDamage)
         {
@@ -23,10 +22,11 @@ public class DamageDealer : MonoBehaviour
             int layerMask = 1 << 9;
             if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength, layerMask))
             {
-                if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
-                {
+                // Debug.Log("MANTAF ");
+                if (hit.transform.TryGetComponent(out Enemy enemy)){
+                    Debug.Log(hit.collider.gameObject.name);
                     enemy.TakeDamage(weaponDamage);
-                    hasDealtDamage.Add(hit.transform.gameObject);
+                    enemy.HitVFX(hit.point);
                 }
             }
         }
@@ -34,8 +34,8 @@ public class DamageDealer : MonoBehaviour
     public void StartDealDamage()
     {
         canDealDamage = true;
-        hasDealtDamage.Clear();
     }
+
     public void EndDealDamage()
     {
         canDealDamage = false;

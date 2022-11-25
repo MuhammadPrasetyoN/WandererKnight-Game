@@ -2038,8 +2038,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7872987160658600473, guid: 257974adc4adae84fb0844afc4c04bb9, type: 3}
+      propertyPath: attackCD
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872987160658600473, guid: 257974adc4adae84fb0844afc4c04bb9, type: 3}
       propertyPath: attackGracePeriod
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7872987160658600474, guid: 257974adc4adae84fb0844afc4c04bb9, type: 3}
       propertyPath: m_Layer

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
   public void PlayGame(){
-    SceneManager.LoadScene("Map1");
+    SceneManager.LoadScene("map");
   }
   public void QuitGame(){
     Debug.Log("QUIT!");

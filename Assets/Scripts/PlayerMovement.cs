@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private InputAction move;
     private InputAction jump;
+    private InputAction roll;
 
     private float ySpeed;
     private float originalStepOffset;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private float? jumpButtonPressedTime;
     private bool isJumping;
     private bool isGrounded;
+    private Vector3 movementDirection;
 
     private void Awake()
     {
@@ -57,24 +59,29 @@ public class PlayerMovement : MonoBehaviour
         jump = playerControls.Player.Jump;
         jump.Enable();
         jump.performed += Jump;
+
+        roll = playerControls.Player.Roll;
+        roll.Enable();
+        roll.performed += Roll;
     }
 
     private void OnDisable()
     {
         move.Disable();
+
         jump.performed -= Jump;
         jump.Disable();
+
+        roll.performed -= Roll;
+        roll.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // float horizontalInput = Input.GetAxis("Horizontal");
-        // float verticalInput = Input.GetAxis("Vertical");
-
         Vector2 inputMove = move.ReadValue<Vector2>();
 
-        Vector3 movementDirection = new Vector3(inputMove.x, 0f, inputMove.y);
+        movementDirection = new Vector3(inputMove.x, 0f, inputMove.y);
         float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
 
         float speed = inputMagnitude * walkSpeed;
@@ -91,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
         movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
 
-
         ySpeed += -9.8f * Time.deltaTime;
 
         Vector3 velocity = movementDirection * speed;
@@ -105,11 +111,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isGrounded", true);
             isGrounded = true;
         }
-
-        // if (Input.GetButtonDown("Jump"))
-        // {
-        //     jumpButtonPressedTime = Time.time;
-        // }
 
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
@@ -146,11 +147,6 @@ public class PlayerMovement : MonoBehaviour
 
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                animator.SetTrigger("doRoll");
-            }
         }
         else
         {
@@ -162,5 +158,13 @@ public class PlayerMovement : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         jumpButtonPressedTime = Time.time;
+    }
+
+    private void Roll(InputAction.CallbackContext context)
+    {
+        if (movementDirection != Vector3.zero)
+        {
+            animator.SetTrigger("doRoll");
+        }
     }
 }

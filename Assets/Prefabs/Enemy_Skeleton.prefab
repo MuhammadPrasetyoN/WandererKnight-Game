@@ -3020,6 +3020,7 @@ GameObject:
   - component: {fileID: 1588183849099137972}
   - component: {fileID: 1588183849090153494}
   - component: {fileID: 937741889956674379}
+  - component: {fileID: -9156595265454419093}
   - component: {fileID: 5005072479584418155}
   - component: {fileID: 996546690835415249}
   m_Layer: 9
@@ -3078,6 +3079,22 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &-9156595265454419093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588183849099497364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00342b6825f13964b85f233e33276d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  health: 50
+  hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
+  ragdoll: {fileID: 252868827361825745, guid: 2d597f40986588949a7d1ebf13d25fde, type: 3}
 --- !u!114 &5005072479584418155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,12 +3107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014c30d7ad78025419ab37a5859bd8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
-  ragdoll: {fileID: 252868827361825745, guid: 2d597f40986588949a7d1ebf13d25fde, type: 3}
   attackCD: 2
   attackRange: 1.8
   aggroRange: 5
+  enemyAreaRange: 6
 --- !u!195 &996546690835415249
 NavMeshAgent:
   m_ObjectHideFlags: 0

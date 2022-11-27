@@ -60,35 +60,38 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext context)
     {
-        if (Time.time > nextAttack)
+        if (equipment.isHoldingWeapon)
         {
-            nextAttack = Time.time + attackCD;
-            lastAttackTime = Time.time;
-            isAttacking = true;
+            if (Time.time > nextAttack)
+            {
+                nextAttack = Time.time + attackCD;
+                lastAttackTime = Time.time;
+                isAttacking = true;
 
-            if (attackCombo == 1)
-            {
-                animator.SetTrigger("doAttack");
+                if (attackCombo == 1)
+                {
+                    animator.SetTrigger("doAttack");
+                }
+                else if (attackCombo == 2)
+                {
+                    animator.SetTrigger("doAttack2");
+                }
+                else if (attackCombo == 3)
+                {
+                    animator.SetTrigger("doAttack3");
+                }
             }
-            else if (attackCombo == 2)
-            {
-                animator.SetTrigger("doAttack2");
-            }
-            else if (attackCombo == 3)
-            {
-                animator.SetTrigger("doAttack3");
-            }
-        }
 
-        if (Time.time - lastAttackTime <= attackGracePeriod)
-        {
-            if (attackCombo < 3)
+            if (Time.time - lastAttackTime <= attackGracePeriod)
             {
-                attackCombo++;
-            }
-            else
-            {
-                attackCombo = 1;
+                if (attackCombo < 3)
+                {
+                    attackCombo++;
+                }
+                else
+                {
+                    attackCombo = 1;
+                }
             }
         }
     }

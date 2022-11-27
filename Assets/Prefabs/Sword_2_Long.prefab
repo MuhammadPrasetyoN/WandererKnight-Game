@@ -45,6 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLength: 1
   weaponDamage: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &6714571344202685517
 GameObject:
   m_ObjectHideFlags: 0

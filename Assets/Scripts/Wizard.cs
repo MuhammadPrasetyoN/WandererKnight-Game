@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Wizard : MonoBehaviour
 {
     [Header("Combat")]
     [SerializeField] float attackCD = 3f;
-    [SerializeField] float attackRange = 1.5f;
-    [SerializeField] float aggroRange = 4f;
-    [SerializeField] float enemyAreaRange = 6f;
+    [SerializeField] float attackRange = 4f;
+    [SerializeField] float aggroRange = 6f;
+    [SerializeField] float enemyAreaRange = 8f;
 
     GameObject player;
     NavMeshAgent agent;
@@ -41,17 +41,22 @@ public class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
             {
+                agent.SetDestination(transform.position);
                 animator.SetTrigger("attack");
                 timePassed = 0;
             }
         }
         timePassed += Time.deltaTime;
 
-        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        if (Vector3.Distance(player.transform.position, transform.position) > attackRange)
         {
-            newDestinationCD = 0.5f;
-            agent.SetDestination(player.transform.position);
+            if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+            {
+                newDestinationCD = 0.5f;
+                agent.SetDestination(player.transform.position);
+            }
         }
+
         newDestinationCD -= Time.deltaTime;
 
         if (Time.time - lastCheck > 3.0f)
@@ -81,14 +86,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void StartDealDamage()
+    public void CastSpell()
     {
-        GetComponentInChildren<EnemyDamageDealer>().StartDealDamage();
-    }
-
-    public void EndDealDamage()
-    {
-        GetComponentInChildren<EnemyDamageDealer>().EndDealDamage();
+        GetComponentInChildren<WizardWeapon>().Attack();
     }
 
     private void OnDrawGizmos()
@@ -100,5 +100,4 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(initialPosition, enemyAreaRange);
     }
-
 }

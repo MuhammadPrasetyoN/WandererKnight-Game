@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-public class HealthSystem : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth Instance;
+
     [SerializeField] float health = 100;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
  
     Animator animator;
+
+    private void Awake() {
+        Instance = this;
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,5 +45,10 @@ public class HealthSystem : MonoBehaviour
         GameObject hit = Instantiate(hitVFX, hitPosition, Quaternion.identity);
         Destroy(hit, 3f);
  
+    }
+
+    public void ConsumePotion(int value)
+    {
+        health += value;
     }
 }

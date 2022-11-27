@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float maxHealth = 50;
     [SerializeField] float health = 3;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
@@ -13,15 +14,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackCD = 3f;
     [SerializeField] float attackRange = 1.5f;
     [SerializeField] float aggroRange = 4f;
+    [SerializeField] float enemyAreaRange = 6f;
 
     GameObject player;
     NavMeshAgent agent;
     Animator animator;
     float timePassed;
     float newDestinationCD = 0.5f;
+
+    private Vector3 initialPosition;
+    private float lastCheck = 0;
     // Start is called before the first frame update
     void Start()
     {
+        initialPosition = transform.position;
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -52,12 +58,27 @@ public class Enemy : MonoBehaviour
         }
         newDestinationCD -= Time.deltaTime;
 
+        if(Time.time - lastCheck > 3.0f){
+            BackToInitial();
+            lastCheck = Time.time;
+        }
+
         if(Vector3.Distance(player.transform.position, transform.position) <= aggroRange){
             Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) ;
             transform.LookAt(targetPostition);
         } 
         
-        
+    }
+
+    private void BackToInitial(){
+        Debug.Log("Checking Position to back");
+        if(Vector3.Distance(transform.position, initialPosition) > enemyAreaRange){
+            agent.SetDestination(initialPosition);
+            
+            // if(health < maxHealth){
+            //     health = maxHealth;
+            // }
+        }
     }
 
     public void TakeDamage(float damageAmount)
@@ -97,6 +118,8 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, aggroRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(initialPosition, enemyAreaRange);
    }
 
 }

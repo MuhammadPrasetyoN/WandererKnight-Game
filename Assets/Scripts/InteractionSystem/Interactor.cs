@@ -12,29 +12,36 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int _numFound;
 
     private IInteractable _interactable;
- 
-    private void Update() {
-        _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders, _interactableMask); 
 
-        if(_numFound > 0)
+    private void Update()
+    {
+        _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders, _interactableMask);
+
+        if (_numFound > 0)
         {
             _interactable = _colliders[0].GetComponent<IInteractable>();
 
-            if(_interactable != null)
+            if (_interactable != null)
             {
-                _interactable.EnterArea(this);
 
-                if(Input.GetKeyDown(KeyCode.E)){
+                _interactable.ShowPromptUI();
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
                     _interactable.Interact(this);
                 }
-            } 
+            }
 
-        } else {
-            if(_interactable != null) _interactable = null;
-        } 
+        }
+        else
+        {
+            if (_interactable != null) _interactable.ClosePromptUI();
+            if (_interactable != null) _interactable = null;
+        }
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
     }

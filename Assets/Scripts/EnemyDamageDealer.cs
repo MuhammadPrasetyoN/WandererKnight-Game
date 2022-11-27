@@ -27,7 +27,7 @@ public class EnemyDamageDealer : MonoBehaviour
             // int layerMask = 1 << 6;
             if (Physics.Raycast(transform.position, transform.up, out raycastHit, weaponLength, _layerMask))
             {
-                if (raycastHit.transform.TryGetComponent(out HealthSystem health)){
+                if (raycastHit.transform.TryGetComponent(out PlayerHealth health)){
                     Debug.Log("enemy has dealt damage");
                     health.TakeDamage(weaponDamage);
                     health.HitVFX(raycastHit.point);

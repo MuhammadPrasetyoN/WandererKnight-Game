@@ -6,23 +6,12 @@ public class Chest : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _prompt;
     private InteractionPromptUI _interactionPromptUI;
-    private float interactionRange = 1.2f;
-    private Transform playerTransform;
 
     public string InteractionPrompt => _prompt;
 
-    private void Start() {
+    private void Awake()
+    {
         _interactionPromptUI = GetComponentInChildren<InteractionPromptUI>();
-    }
-
-    private void Update() {
-        if(playerTransform != null){
-            if(Vector3.Distance(playerTransform.position, transform.position) <= interactionRange){
-                if(!_interactionPromptUI.IsDisplayed) _interactionPromptUI.SetUp(InteractionPrompt);
-            } else {
-                if(_interactionPromptUI.IsDisplayed) _interactionPromptUI.Close();
-            }
-        }
     }
 
     public bool Interact(Interactor interactor)
@@ -31,15 +20,13 @@ public class Chest : MonoBehaviour, IInteractable
         return true;
     }
 
-    public bool EnterArea(Interactor interactor) {
-        playerTransform = interactor.transform;
-        return true;
-    }
-
-    private void OnDrawGizmos()
+    public void ShowPromptUI()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, interactionRange);
+        if (!_interactionPromptUI.IsDisplayed) _interactionPromptUI.SetUp(InteractionPrompt);
     }
 
+    public void ClosePromptUI()
+    {
+        if (_interactionPromptUI.IsDisplayed) _interactionPromptUI.Close();
+    }
 }

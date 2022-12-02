@@ -6,10 +6,12 @@ using UnityEngine.InputSystem;
 public class InputSystemManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryMenu;
+    [SerializeField] private GameObject questMenu;
     [SerializeField] private GameObject pauseMenu;
     private PlayerInputActions playerControls;
     private InputAction pause;
     private InputAction inventory;
+    private InputAction quest;
     private InputAction resume;
     private bool isGamePaused = false;
 
@@ -28,6 +30,10 @@ public class InputSystemManager : MonoBehaviour
         inventory.Enable();
         inventory.performed += SwitchToInventory;
 
+        quest = playerControls.Player.Quest;
+        quest.Enable();
+        quest.performed += SwitchToQuest;
+
         resume = playerControls.UI.Resume;
         resume.Enable();
         resume.performed += SwitchToGame;
@@ -43,6 +49,9 @@ public class InputSystemManager : MonoBehaviour
 
         inventory.performed -= SwitchToInventory;
         inventory.Disable();
+
+        quest.performed -= SwitchToQuest;
+        quest.Disable();
     }
 
     private void SwitchToPause(InputAction.CallbackContext context)
@@ -55,6 +64,13 @@ public class InputSystemManager : MonoBehaviour
     {
         inventoryMenu.SetActive(true);
         InventoryManager.Instance.ListItem();
+        Pause();
+    }
+
+    private void SwitchToQuest(InputAction.CallbackContext context)
+    {
+        questMenu.SetActive(true);
+        QuestManager.Instance.ListQuest();
         Pause();
     }
 
@@ -79,8 +95,10 @@ public class InputSystemManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         inventoryMenu.SetActive(false);
+        questMenu.SetActive(false);
         pauseMenu.SetActive(false);
         InventoryManager.Instance.CleanList();
+        QuestManager.Instance.CleanList();
 
         Time.timeScale = 1f;
         isGamePaused = false;

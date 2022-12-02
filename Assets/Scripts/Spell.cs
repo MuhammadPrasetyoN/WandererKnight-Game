@@ -26,8 +26,8 @@ public class Spell : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             Debug.Log("KENA");
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(spellDamage);
-            collision.gameObject.GetComponent<PlayerHealth>().HitVFX(contact.point);
+            collision.gameObject.GetComponent<PlayerStat>().TakeDamage(spellDamage);
+            collision.gameObject.GetComponent<PlayerStat>().HitVFX(contact.point);
         }
 
         Destroy(gameObject);

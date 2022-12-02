@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-public class PlayerHealth : MonoBehaviour
+public class PlayerStat : MonoBehaviour
 {
-    public static PlayerHealth Instance;
+    public static PlayerStat Instance;
     public HealthBar healthBar;
 
     [SerializeField] float maxHealth = 1000;
@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         health = maxHealth;
-        SetHealth();
+        // SetHealth();
     }
  
     public void TakeDamage(float damageAmount)
@@ -58,5 +58,6 @@ public class PlayerHealth : MonoBehaviour
     public void ConsumePotion(int value)
     {
         health += value;
+        SetHealth();
     }
 }

@@ -26,7 +26,7 @@ public class InventoryItemController : MonoBehaviour
         switch (item.itemType)
         {
             case Item.ItemType.Potion:
-                PlayerHealth.Instance.ConsumePotion(item.value);
+                PlayerStat.Instance.ConsumePotion(item.value);
             break;
         }
 

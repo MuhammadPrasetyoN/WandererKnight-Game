@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public enum ItemType
     {
         Potion,
-        Food
+        Food,
+        Coins
     }
 }

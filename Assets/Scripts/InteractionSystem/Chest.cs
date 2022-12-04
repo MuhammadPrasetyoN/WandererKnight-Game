@@ -23,7 +23,10 @@ public class Chest : MonoBehaviour, IInteractable
     {
         Debug.Log("Open Chest");
         animator.SetTrigger("OpenChest");
-        Destroy(gameObject, 2);
+        ItemPickup pick = GetComponent<ItemPickup>();
+        ClosePromptUI();
+        pick.Pickup(2);
+
         return true;
     }
 

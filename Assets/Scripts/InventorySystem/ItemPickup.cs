@@ -6,10 +6,10 @@ public class ItemPickup : MonoBehaviour
 {
     public Item Item;
 
-    public void Pickup()
+    public void Pickup(float destroyDuration = 0)
     {
         InventoryManager.Instance.Add(Item);
-        Destroy(gameObject);
+        Destroy(gameObject, destroyDuration);
     }
 
 }

@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeDuration: 3.5
-  spellDamage: 20
+  spellDamage: 80
   hitVFX: {fileID: 1472517160122636, guid: 42b5a7c17e87672438c3602c0b701f71, type: 3}

@@ -11,6 +11,7 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
+    [SerializeField] AudioSource takeDamageSfx;
 
     Animator animator;
 
@@ -31,6 +32,7 @@ public class PlayerStat : MonoBehaviour
         health -= damageAmount;
         animator.SetTrigger("damage");
         SetHealth();
+        takeDamageSfx.Play();
 
         if (health <= 0)
         {

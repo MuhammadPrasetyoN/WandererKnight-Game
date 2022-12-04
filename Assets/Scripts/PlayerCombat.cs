@@ -8,6 +8,7 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private float attackGracePeriod = 1.5f;
     [SerializeField] private float attackCD = 1f;
+    [SerializeField] AudioSource swordSwingSfx;
 
     private PlayerInputActions playerControls;
     private Animator animator;
@@ -68,6 +69,7 @@ public class PlayerCombat : MonoBehaviour
                 lastAttackTime = Time.time;
                 isAttacking = true;
 
+
                 if (attackCombo == 1)
                 {
                     animator.SetTrigger("doAttack");
@@ -104,5 +106,10 @@ public class PlayerCombat : MonoBehaviour
     public void EndDealDamage()
     {
         GetComponentInChildren<DamageDealer>().EndDealDamage();
+    }
+
+    public void SwingSound()
+    {
+        swordSwingSfx.Play();
     }
 }

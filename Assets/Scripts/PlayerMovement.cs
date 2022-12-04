@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod = 0.2f;
 
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private AudioSource footStepSfx;
 
     private PlayerInputActions playerControls;
     private Animator animator;
@@ -139,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isMoving", true);
 
+
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
@@ -160,5 +162,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("doRoll");
         }
+    }
+
+    public void WalkSound()
+    {
+        footStepSfx.Play();
     }
 }

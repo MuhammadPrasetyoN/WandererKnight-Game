@@ -9,10 +9,12 @@ public class Spell : MonoBehaviour
     [SerializeField] private float spellDamage;
     [SerializeField] private GameObject hitVFX;
 
+    AudioSource explosionSfx;
+
     private void Awake()
     {
-        // hitSound = GameObject.FindWithTag("HitSfx");
-        // hitSfx = hitSound.GetComponent<AudioSource>();
+        GameObject hitSound = GameObject.FindWithTag("ExplosionSfx");
+        explosionSfx = hitSound.GetComponent<AudioSource>();
         Destroy(gameObject, lifeDuration);
     }
 
@@ -30,6 +32,7 @@ public class Spell : MonoBehaviour
             collision.gameObject.GetComponent<PlayerStat>().HitVFX(contact.point);
         }
 
+        explosionSfx.Play();
         Destroy(gameObject);
     }
 }

@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 0.8
-  weaponDamage: 100
+  weaponDamage: 50
   _layerMask:
     serializedVersion: 2
     m_Bits: 64

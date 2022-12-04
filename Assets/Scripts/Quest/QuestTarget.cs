@@ -8,9 +8,13 @@ public class QuestTarget : MonoBehaviour
 
     public void QuestProgress()
     {
-        if (QuestManager.Instance.activeQuest.Base.Id == questToCheck.Id)
+        if (QuestManager.Instance.activeQuest != null)
         {
-            QuestManager.Instance.AddProgress();
+            if (QuestManager.Instance.activeQuest.Base.Id == questToCheck.Id)
+            {
+                QuestManager.Instance.AddProgress();
+            }
         }
+
     }
 }

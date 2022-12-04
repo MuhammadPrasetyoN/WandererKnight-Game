@@ -17,7 +17,7 @@ public class QuestBase : ScriptableObject
     public string Description => description;
     public string Objective => objective;
     public int RequiredAmount => requiredAmount;
-    public enum QuestType { Gather, Kill }
+    public enum QuestType { Gather, Kill, Interact, Travel }
 
 }
 

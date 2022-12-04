@@ -9,8 +9,6 @@ public class QuestWaypoint : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     // Indicator icon
     public Image img;
-    // The target (location, enemy, etc..)
-    public Transform target;
     // UI Text to display the distance
     public TMP_Text meter;
     // To adjust the position of the icon
@@ -38,10 +36,10 @@ public class QuestWaypoint : MonoBehaviour
             float maxY = Screen.height - minY;
 
             // Temporary variable to store the converted position from 3D world point to 2D screen point
-            Vector2 pos = Camera.main.WorldToScreenPoint(target.position + offset);
+            Vector2 pos = Camera.main.WorldToScreenPoint(transform.position + offset);
 
             // Check if the target is behind us, to only show the icon once the target is in front
-            if (Vector3.Dot((player.transform.position - target.position), cameraTransform.forward) > 0)
+            if (Vector3.Dot((player.transform.position - transform.position), cameraTransform.forward) > 0)
             {
                 // Check if the target is on the left side of the screen
                 if (pos.x < Screen.width / 2)
@@ -63,7 +61,7 @@ public class QuestWaypoint : MonoBehaviour
             // Update the marker's position
             img.transform.position = pos;
             // Change the meter text to the distance with the meter unit 'm'
-            meter.text = ((int)Vector3.Distance(player.transform.position, target.position)).ToString() + "m";
+            meter.text = ((int)Vector3.Distance(player.transform.position, transform.position)).ToString() + "m";
         }
         else
         {

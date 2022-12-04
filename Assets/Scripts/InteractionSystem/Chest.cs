@@ -8,10 +8,12 @@ public class Chest : MonoBehaviour, IInteractable
     private InteractionPromptUI _interactionPromptUI;
     Animator animator;
     public string InteractionPrompt => _prompt;
- void Start()
+
+    void Start()
     {
         animator = GetComponent<Animator>();
     }
+
     private void Awake()
     {
         _interactionPromptUI = GetComponentInChildren<InteractionPromptUI>();
@@ -21,7 +23,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         Debug.Log("Open Chest");
         animator.SetTrigger("OpenChest");
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 2);
         return true;
     }
 

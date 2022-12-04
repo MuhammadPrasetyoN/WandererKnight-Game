@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IInteractable
+public class LadyOfLake : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _prompt;
     [SerializeField] float aggroRange = 2f;
     private InteractionPromptUI _interactionPromptUI;
-    Animator animator;
+    // Animator animator;
     public string InteractionPrompt => _prompt;
 
     GameObject player;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
     }
     private void Awake()
@@ -24,8 +24,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {
-        Debug.Log("Talk to NPC");
-        animator.SetTrigger("Talk");
+        Debug.Log("Lady of Lake Interact");
+        // animator.SetTrigger("Talk");
 
         QuestTarget? questTarget = GetComponent<QuestTarget>();
         if (questTarget != null)
@@ -64,5 +64,4 @@ public class NPC : MonoBehaviour, IInteractable
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, aggroRange);
     }
-
 }

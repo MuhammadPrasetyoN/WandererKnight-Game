@@ -21,6 +21,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         Debug.Log("Open Chest");
         animator.SetTrigger("OpenChest");
+        Destroy(gameObject, 1);
         return true;
     }
 

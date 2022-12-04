@@ -42,11 +42,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Instantiate(ragdoll, transform.position, transform.rotation);
+        Destroy(Instantiate(ragdoll, transform.position, transform.rotation), 3);
         Destroy(this.gameObject);
 
         QuestTarget questTarget = GetComponent<QuestTarget>();
-        if(questTarget != null)
+        if (questTarget != null)
         {
             questTarget.QuestProgress();
         }

@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class InventoryItemController : MonoBehaviour
 {
-    Item item;
+    public Item item;
 
     public Button RemoveButton;
 
     public void RemoveItem()
     {
-        InventoryManager.Instance.Remove(item);
+        if (item.itemType == Item.ItemType.Potion || item.itemType == Item.ItemType.Food)
+        {
+            InventoryManager.Instance.Remove(item);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public void AddItem(Item newItem)
@@ -27,9 +30,9 @@ public class InventoryItemController : MonoBehaviour
         {
             case Item.ItemType.Potion:
                 PlayerStat.Instance.ConsumePotion(item.value);
-            break;
+                RemoveItem();
+                break;
         }
 
-        RemoveItem();
     }
 }

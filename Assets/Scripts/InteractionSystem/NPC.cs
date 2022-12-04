@@ -25,17 +25,22 @@ public class NPC : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)
     {
         Debug.Log("Talk to NPC");
-    animator.SetTrigger("Talk");
+        animator.SetTrigger("Talk");
         return true;
     }
 
 
-    public void Update(){
-        if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+    public void Update()
+    {
+        if (player != null)
         {
-            Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(targetPostition);
+            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+            {
+                Vector3 targetPostition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+                transform.LookAt(targetPostition);
+            }
         }
+
     }
     public void ShowPromptUI()
     {

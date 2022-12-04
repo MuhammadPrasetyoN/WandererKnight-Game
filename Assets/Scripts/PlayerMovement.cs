@@ -5,23 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float walkSpeed = 5;
+    [SerializeField] private float walkSpeed = 5;
 
-    [SerializeField]
-    private float runSpeed = 8;
+    [SerializeField] private float runSpeed = 8;
 
-    [SerializeField]
-    private float rotationSpeed = 720;
+    [SerializeField] private float rotationSpeed = 720;
 
-    [SerializeField]
-    private float jumpSpeed = 5;
+    [SerializeField] private float jumpSpeed = 5;
 
-    [SerializeField]
-    private float jumpButtonGracePeriod = 0.2f;
+    [SerializeField] private float jumpButtonGracePeriod = 0.2f;
 
-    [SerializeField]
-    private Transform cameraTransform;
+    [SerializeField] private Transform cameraTransform;
 
     private PlayerInputActions playerControls;
     private Animator animator;

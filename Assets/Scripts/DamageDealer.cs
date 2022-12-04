@@ -26,7 +26,7 @@ public class DamageDealer : MonoBehaviour
                 // Debug.Log("MANTAF ");
                 if (hit.transform.TryGetComponent(out EnemyHealth enemy))
                 {
-                    Debug.Log(hit.collider.gameObject.name);
+                    // Debug.Log(hit.collider.gameObject.name);
                     enemy.TakeDamage(weaponDamage);
                     enemy.HitVFX(hit.point);
                 }

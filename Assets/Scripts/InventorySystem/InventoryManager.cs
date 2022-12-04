@@ -66,7 +66,10 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (Transform item in ItemContent)
             {
-                item.Find("RemoveButton").gameObject.SetActive(true);
+                var itemType = item.GetComponent<InventoryItemController>().item.itemType;
+
+                if (itemType == Item.ItemType.Potion || itemType == Item.ItemType.Food)
+                    item.Find("RemoveButton").gameObject.SetActive(true);
             }
         }
         else

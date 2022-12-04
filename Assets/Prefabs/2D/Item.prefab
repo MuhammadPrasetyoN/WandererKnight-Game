@@ -315,7 +315,7 @@ RectTransform:
   m_GameObject: {fileID: 951654429771452691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4983, y: 1.4983, z: 1.4983}
+  m_LocalScale: {x: 1.7266409, y: 1.7266409, z: 1.7266409}
   m_Children: []
   m_Father: {fileID: 951654430014601734}
   m_RootOrder: 1
@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.5842, y: 24.5}
-  m_SizeDelta: {x: 93.0871, y: 28.9366}
+  m_AnchoredPosition: {x: -0.0239, y: 26.6}
+  m_SizeDelta: {x: 121.1, y: 28.9366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6586011115117275189
 CanvasRenderer:
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item
+  m_text: Green pot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d5498df5dff00a438805af5deaa21ba, type: 2}
   m_sharedMaterial: {fileID: 3654487155031221767, guid: 1d5498df5dff00a438805af5deaa21ba, type: 2}
@@ -604,8 +604,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 20.7
+  m_fontSizeBase: 20.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1

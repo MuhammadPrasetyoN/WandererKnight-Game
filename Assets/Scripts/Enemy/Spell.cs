@@ -25,7 +25,7 @@ public class Spell : MonoBehaviour
 
         if (collision.gameObject.layer == 6)
         {
-            Debug.Log("KENA");
+            // Debug.Log("player Hit by spell");
             collision.gameObject.GetComponent<PlayerStat>().TakeDamage(spellDamage);
             collision.gameObject.GetComponent<PlayerStat>().HitVFX(contact.point);
         }

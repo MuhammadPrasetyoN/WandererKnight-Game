@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7406d7b9fa3d52740bda2e0a073e913d, type: 3}
   m_Name: FirstQuest
   m_EditorClassIdentifier: 
+  id: 0
   name: First Quest
   description: this is the first quest!
+  objective: Kill the Wizard
   requiredAmount: 1
   questType: 1

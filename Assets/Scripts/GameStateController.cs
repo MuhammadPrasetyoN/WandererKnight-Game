@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputSystemManager : MonoBehaviour
+public class GameStateController : MonoBehaviour
 {
+
+    public static GameStateController Instance;
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject questMenu;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
     private PlayerInputActions playerControls;
     private InputAction pause;
     private InputAction inventory;
@@ -17,7 +20,13 @@ public class InputSystemManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         playerControls = new PlayerInputActions();
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable()
@@ -56,27 +65,43 @@ public class InputSystemManager : MonoBehaviour
 
     private void SwitchToPause(InputAction.CallbackContext context)
     {
-        pauseMenu.SetActive(true);
-        Pause();
+        if (!gameOverMenu.active)
+        {
+            Pause();
+            pauseMenu.SetActive(true);
+        }
+
     }
 
     private void SwitchToInventory(InputAction.CallbackContext context)
     {
-        inventoryMenu.SetActive(true);
-        InventoryManager.Instance.ListItem();
-        Pause();
+        if (!gameOverMenu.active)
+        {
+            Pause();
+            inventoryMenu.SetActive(true);
+            InventoryManager.Instance.ListItem();
+        }
+
     }
 
     private void SwitchToQuest(InputAction.CallbackContext context)
     {
-        questMenu.SetActive(true);
-        QuestManager.Instance.ListQuest();
-        Pause();
+        if (!gameOverMenu.active)
+        {
+            Pause();
+            questMenu.SetActive(true);
+            QuestManager.Instance.ListQuest();
+            QuestManager.Instance.ShowDetailQuest(null);
+        }
+
     }
 
     private void SwitchToGame(InputAction.CallbackContext context)
     {
-        Play();
+        if (!gameOverMenu.active)
+        {
+            Play();
+        }
     }
 
     public void Pause()
@@ -107,15 +132,23 @@ public class InputSystemManager : MonoBehaviour
         playerControls.UI.Disable();
     }
 
-    private void OnApplicationFocus(bool focus)
+    public void GameOver()
     {
-        if (focus)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Cursor.lockState = CursorLockMode.None;
+        playerControls.Player.Disable();
+        playerControls.UI.Enable();
+        gameOverMenu.SetActive(true);
     }
+
+    // private void OnApplicationFocus(bool focus)
+    // {
+    //     if (focus)
+    //     {
+    //         Cursor.lockState = CursorLockMode.Locked;
+    //     }
+    //     else
+    //     {
+    //         Cursor.lockState = CursorLockMode.None;
+    //     }
+    // }
 }

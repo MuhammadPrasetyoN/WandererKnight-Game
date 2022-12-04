@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class PlayerStat : MonoBehaviour
 {
     public static PlayerStat Instance;
@@ -11,10 +11,11 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
- 
+
     Animator animator;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
     }
 
@@ -24,28 +25,28 @@ public class PlayerStat : MonoBehaviour
         health = maxHealth;
         // SetHealth();
     }
- 
+
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("AHH "+ health);
         animator.SetTrigger("damage");
         SetHealth();
-      //  CameraShake.Instance.ShakeCamera(2f, 0.2f);
- 
+
         if (health <= 0)
         {
             Die();
         }
     }
- 
+
     void Die()
     {
         Instantiate(ragdoll, transform.position, transform.rotation);
         Destroy(this.gameObject);
+        GameStateController.Instance.GameOver();
     }
 
-    public void SetHealth(){
+    public void SetHealth()
+    {
         healthBar.SetHealth(health, maxHealth);
     }
 

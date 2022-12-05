@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction move;
     private InputAction jump;
     private InputAction roll;
+    private InputAction sprint;
 
     private float ySpeed;
     private float originalStepOffset;
@@ -51,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
         move = playerControls.Player.Move;
         move.Enable();
 
+        sprint = playerControls.Player.Sprint;
+        sprint.Enable();
+
         jump = playerControls.Player.Jump;
         jump.Enable();
         jump.performed += Jump;
@@ -63,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         move.Disable();
+        sprint.Disable();
 
         jump.performed -= Jump;
         jump.Disable();
@@ -80,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
 
         float speed = inputMagnitude * walkSpeed;
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (sprint.ReadValue<float>() > 0)
         {
             speed = inputMagnitude * runSpeed;
         }
@@ -146,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            footStepSfx.Stop();
             animator.SetBool("isMoving", false);
         }
 
@@ -164,8 +170,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void WalkSound()
+    public void WalkSound(AnimationEvent evt)
     {
-        footStepSfx.Play();
+        if (evt.animatorClipInfo.weight >= 0.5)
+        {
+            footStepSfx.Play();
+        }
     }
 }

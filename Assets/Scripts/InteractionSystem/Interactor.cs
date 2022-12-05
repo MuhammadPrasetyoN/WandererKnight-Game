@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
+    private PlayerInputActions playerControls;
+    private InputAction interactionAction;
     [SerializeField] private Transform _interactionPoint;
     [SerializeField] private float _interactionPointRadius = 0.25f;
     [SerializeField] private LayerMask _interactableMask;
@@ -12,6 +15,23 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int _numFound;
 
     private IInteractable _interactable;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        interactionAction = playerControls.Player.Interact;
+        interactionAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        interactionAction.Disable();
+    }
+
 
     private void Update()
     {
@@ -26,7 +46,7 @@ public class Interactor : MonoBehaviour
 
                 _interactable.ShowPromptUI();
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (interactionAction.triggered)
                 {
                     _interactable.Interact(this);
                 }

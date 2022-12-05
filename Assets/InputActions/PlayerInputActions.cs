@@ -89,6 +89,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Value"",
+                    ""id"": ""47aed7d7-2f4c-4cf6-9fba-384e653cdd98"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Weapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b1a3db9-6ec7-462b-bcf3-122d1f47054a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""29068cbf-142d-4e72-8cc2-23f088af1faa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -215,6 +242,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5729337e-fffc-41d2-81ab-e3ed279e4d39"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""34a9089f-f9ff-4c80-b733-eab35384c139"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -226,8 +264,30 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1779cdbc-ca40-4038-be18-55998531497f"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""983ba8c3-1a15-4750-b5aa-92b11f570ee2"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f79cf69-c3d8-4a37-a113-3313103fbb33"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button10"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -281,8 +341,30 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9717edb6-7ddb-4e8f-adec-503bcc3d46d4"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8523968c-caa5-495e-8175-651eeb479807"",
                     ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba4117a2-fcf4-4bd2-8a52-146bd21d9393"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button7"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -298,6 +380,83 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62e0ec59-4f2c-442a-a9d9-3c09a1844ce6"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""581f7378-c3d1-479d-849c-3ec3b16155b0"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dbaa604e-2109-4f2e-8aa9-1c9c06608ae4"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1998cb9-8977-42d7-b1cc-69ad9df8e73c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1a5ae8b-6212-480d-a92d-f70f75507a57"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e00d634-8009-42d0-b1a2-9f88ac51089f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bdf7950-1300-4953-90b0-09a539f07b8a"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -696,6 +855,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""28bcf467-77e9-4d5a-b580-6995f8693672"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""462019f1-fff9-40aa-9cb1-60aad0a1083f"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -720,6 +890,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""694ab493-0431-42c8-85f3-7a9a3c9df5ff"",
                     ""path"": ""<Touchscreen>/touch*/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e81ea674-e666-4a1c-82b0-6e4d623a7e74"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -764,6 +945,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""33becbf4-a466-45ae-8efb-79eb8ad881e6"",
                     ""path"": ""<XRController>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5364059f-e6b6-4966-aa59-7d422083e1a7"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -869,6 +1061,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Resume"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22881e94-618f-4899-9000-404036470ed0"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -884,6 +1087,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Weapon = m_Player.FindAction("Weapon", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -963,6 +1169,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Quest;
+    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_Weapon;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -974,6 +1183,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Quest => m_Wrapper.m_Player_Quest;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @Weapon => m_Wrapper.m_Player_Weapon;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1004,6 +1216,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Quest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
                 @Quest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
                 @Quest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Weapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeapon;
+                @Weapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeapon;
+                @Weapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeapon;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1029,6 +1250,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Quest.started += instance.OnQuest;
                 @Quest.performed += instance.OnQuest;
                 @Quest.canceled += instance.OnQuest;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Weapon.started += instance.OnWeapon;
+                @Weapon.performed += instance.OnWeapon;
+                @Weapon.canceled += instance.OnWeapon;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1155,6 +1385,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnQuest(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnWeapon(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

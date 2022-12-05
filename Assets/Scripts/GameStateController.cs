@@ -11,6 +11,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private GameObject questMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject gameWinMenu;
     private PlayerInputActions playerControls;
     private InputAction pause;
     private InputAction inventory;
@@ -122,6 +123,7 @@ public class GameStateController : MonoBehaviour
         inventoryMenu.SetActive(false);
         questMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        gameWinMenu.SetActive(false);
         InventoryManager.Instance.CleanList();
         QuestManager.Instance.CleanList();
 
@@ -138,6 +140,14 @@ public class GameStateController : MonoBehaviour
         playerControls.Player.Disable();
         playerControls.UI.Enable();
         gameOverMenu.SetActive(true);
+    }
+
+    public void GameWin()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        playerControls.Player.Disable();
+        playerControls.UI.Enable();
+        gameWinMenu.SetActive(true);
     }
 
     // private void OnApplicationFocus(bool focus)

@@ -6,6 +6,10 @@ public class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _prompt;
     [SerializeField] float aggroRange = 2f;
+    [SerializeField] GameObject dialogBox;
+    [SerializeField] Transform dialogContainer;
+    [SerializeField] string[] lines;
+
     private InteractionPromptUI _interactionPromptUI;
     Animator animator;
     public string InteractionPrompt => _prompt;
@@ -26,6 +30,19 @@ public class NPC : MonoBehaviour, IInteractable
     {
         Debug.Log("Talk to NPC");
         animator.SetTrigger("Talk");
+
+        if(dialogBox != null)
+        {
+            GameObject obj = Instantiate(dialogBox, dialogContainer);
+            Dialog dialog = obj.GetComponent<Dialog>();
+
+            var i = 0;
+            foreach(string line in lines){
+                dialog.lines[i] = line;
+                i++;
+            }
+            obj.SetActive(true);
+        }
 
         QuestTarget? questTarget = GetComponent<QuestTarget>();
         if (questTarget != null)

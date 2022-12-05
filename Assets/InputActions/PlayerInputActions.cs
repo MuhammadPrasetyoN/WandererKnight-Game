@@ -375,7 +375,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9d4c0031-a074-4c3c-a448-62653f8daedd"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1066,6 +1066,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""22881e94-618f-4899-9000-404036470ed0"",
                     ""path"": ""<HID::Microntek              USB Joystick          >/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32ecbe5c-ff8d-4bca-9a32-d01f4198431b"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button9"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
